@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html class="no-js" lang="ko">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Calendar</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <meta name="description" content=""/>
+
+  <meta property="og:title" content=""/>
+  <meta property="og:type" content=""/>
+  <meta property="og:url" content=""/>
+  <meta property="og:image" content=""/>
+
+  <link rel="icon" href="/favicon.ico" sizes="any"/>
+  <link rel="icon" href="/icon.svg" type="image/svg+xml"/>
+  <link rel="apple-touch-icon" href="icon.png"/>
+<!--  <style>-->
+<!--    .calendar-container table {width: 560px;}-->
+<!--    #daysTable td {width: 80px; height: 50px;}-->
+<!--  </style>-->
+
+  <link rel="manifest" href="site.webmanifest"/>
+  <meta name="theme-color" content="#fafafa"/>
+</head>
+
+<body>
+
+<h1 class="title">calendar</h1>
+
+<!-- 전체 컨테이너, column -->
+<div class="container">
+  <!-- 년,월 container -->
+  <div class="calendar-container">
+    <h2 id="year">2024</h2>
+    <div class="month-container">
+      <span class="hover-element" id="prevBtn">◀</span>
+      <span id="month">1월</span>
+      <span class="hover-element" id="nextBtn">▶</span>
+    </div>
+
+    <!-- 달력 테이블 -->
+    <table>
+      <thead>
+      <tr>
+        <th>일</th>
+        <th>월</th>
+        <th>화</th>
+        <th>수</th>
+        <th>목</th>
+        <th>금</th>
+        <th>토</th>
+      </tr>
+      </thead>
+
+      <!-- 월마다 다르게 일수 나타날 테이블, 최대6*7-->
+      <tbody id="daysTable"></tbody>
+    </table>
+  </div>
+
+  <!-- 일정을 보여주고 입력할 공간 -->
+  <div class="show-container">
+    <!-- 일정 등록 -->
+    <div class="input-box" id="inputBox" style="display: none">
+    <h3 class="current-id">2024-1-09</h3>
+      <form>
+        <input class="input" id="inputMemo" value=""/>
+        <div class="button-box">
+          <input type="button" id="saveBtn" value="Save"/>
+          <input type="button" id="cancelBtn" value="Cancel"/>
+        </div>
+      </form>
+    </div>
+
+    <!-- 등록된 메모 보여주기 -->
+    <div class="list-box" id="listBox" style="display: block">
+    <h3 class="current-id">현재날짜</h3>
+      <span id="memoAlarm" style="color: gray">등록된 메모가 없습니다</span>
+        <form id="editForm" hidden="true">
+          <input id="editInput" value=""/>
+          <span class="confirm-button" id="editConfirmBtn">✔️</span>
+          <span class="cancel-button" id="editCancelBtn">❌</span>
+        </form>
+      <ul id="memoList" class="memo-box">
+      </ul>
+      <button class="add-button" id="addBtn" onclick="addMemo()">일정 추가</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/app.js"></script>
+<script src="js/repository.js"></script>
+
+<!-- html/css 추가할것
+  * 현재날짜 파란글씨(+)
+  * 일정 등록되어있는 날짜 밑줄표시(+)
+  * 현재 선택한 날짜 굵게,크게(+)
+  * 마우스 갖다댔을때 효과(+)
+  * 일정 여러개 보여지는것으로 추가(+)
+    - 일정은 li 태그로 감싸져서 생성된다.
+    - 일정마다 삭제 버튼이 있다
+  * 일정등록칸에 현재날짜 직관적으로 보여주기(+)
+  * 일정 등록된 셀은 컬러로 표시하기.. 밑줄말고(+)
+  -->
+
+<!-- 등록할것
+  * 초기화면구성 : 현재날짜가 선택되어있는걸로 시작 (등록된 메모 보여줘야함) (+)
+  * 일정은 한개씩만 추가할수있으므로 스토리지에 등록이 되어있으면 버튼 비활성화되어야함 (+)
+  * localstorage value json형식으로 여러개 저장할수있도록 변환 (+)
+    - json의 키값을 1씩 시작하는 id를 부여한다.
+  * 삭제기능 (+)
+  * 수정기능 (+)
+  -->
+
+
+</body>
+</html>
+
